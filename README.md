@@ -19,9 +19,14 @@ for latest mysql, change image with [mysql/mysql-server:latest]
       mynetwork:
         driver: bridge
 
-error message [Authentication plugin 'caching_sha2_password' cannot be loaded] 
+create user enable access from network
 
-		+ solution 
+	+ mysql -u root -psap123ok
+	+ CREATE USER 'hakim'@'%%' IDENTIFIED BY 'sap123ok';
+	+ GRANT ALL PRIVILEGES ON *.* to 'hakim'@'%%' WITH GRANT OPTION;
+	+ restart docker container 
+
+solution error message [Authentication plugin 'caching_sha2_password' cannot be loaded] 
   
       + docker exec -it 3f sh
       + mysql -u root -psap123ok
